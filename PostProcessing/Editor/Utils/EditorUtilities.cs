@@ -79,6 +79,7 @@ namespace UnityEditor.Rendering.PostProcessing
         {
             s_AttributeDecorators.Clear();
 
+            /*
             // Look for all the valid attribute decorators
             var types = RuntimeUtilities.GetAllAssemblyTypes()
                             .Where(
@@ -86,6 +87,19 @@ namespace UnityEditor.Rendering.PostProcessing
                                   && t.IsDefined(typeof(DecoratorAttribute), false)
                                   && !t.IsAbstract
                             );
+            */
+
+            // XXX(jameskim): 어셈블리를 도는데 시간이 너무 오래 걸려서 (400ms+) 하드코딩합니다.
+            // Debug.Log(types.Aggregate("", (str, t) => $"{str}typeof({t}),\n"));
+            var types = new[]
+            {
+                typeof(UnityEditor.Rendering.PostProcessing.RangeDecorator),
+                typeof(UnityEditor.Rendering.PostProcessing.MinDecorator),
+                typeof(UnityEditor.Rendering.PostProcessing.MaxDecorator),
+                typeof(UnityEditor.Rendering.PostProcessing.MinMaxDecorator),
+                typeof(UnityEditor.Rendering.PostProcessing.ColorUsageDecorator),
+                typeof(UnityEditor.Rendering.PostProcessing.TrackballDecorator),
+            };
 
             // Store them
             foreach (var type in types)
