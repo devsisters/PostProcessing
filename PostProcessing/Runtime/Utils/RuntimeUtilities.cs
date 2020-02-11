@@ -761,7 +761,7 @@ namespace UnityEngine.Rendering.PostProcessing
         {
             get
             {
-#if ENABLE_VR && !UNITY_2020_1_OR_NEWER
+#if false && !UNITY_2020_1_OR_NEWER
                 return UnityEditorInternal.VR.VREditor.GetVREnabledOnTargetGroup(BuildPipeline.GetBuildTargetGroup(EditorUserBuildSettings.activeBuildTarget))
                     && PlayerSettings.stereoRenderingPath == UnityEditor.StereoRenderingPath.SinglePass;
 #else
@@ -784,7 +784,7 @@ namespace UnityEngine.Rendering.PostProcessing
             {
 #if UNITY_EDITOR
                 return isSinglePassStereoSelected && Application.isPlaying;
-#elif !ENABLE_VR
+#elif !false
                 return false;
 #else
                 return UnityEngine.XR.XRSettings.eyeTextureDesc.vrUsage == VRTextureUsage.TwoEyes;
@@ -799,9 +799,9 @@ namespace UnityEngine.Rendering.PostProcessing
         {
             get
             {
-#if ENABLE_VR && UNITY_EDITOR && !UNITY_2020_1_OR_NEWER
+#if false && UNITY_EDITOR && !UNITY_2020_1_OR_NEWER
                 return UnityEditorInternal.VR.VREditor.GetVREnabledOnTargetGroup(BuildPipeline.GetBuildTargetGroup(EditorUserBuildSettings.activeBuildTarget));
-#elif UNITY_XBOXONE || !ENABLE_VR
+#elif UNITY_XBOXONE || !false
                 return false;
 #else
                 return UnityEngine.XR.XRSettings.enabled;
